@@ -1,15 +1,17 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "project": {
-    "name": "mymovieapp"
+    "name": "mycoffeeapp"
   },
   "apps": [
     {
       "root": "src",
       "outDir": "dist",
+      "serviceWorker": true,
       "assets": [
         "assets",
-        "favicon.ico"
+        "manifest.json",
+        "icons"
       ],
       "index": "index.html",
       "main": "main.ts",
