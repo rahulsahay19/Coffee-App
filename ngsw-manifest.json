@@ -29,7 +29,7 @@
             {
                 "name" : "api",
                 "urls" : {
-                    "http://localhost:3000/coffees" :{
+                    "https://my-coffee-app-f8a64.firebaseio.com/coffees/data.json" :{
                         "match" : "prefix"
                     }
                 },

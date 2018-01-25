@@ -28,9 +28,10 @@ export class CoffeeComponent implements OnInit {
     this.coffee= new Coffee();
     this.routingSubscription = 
       this.route.params.subscribe(params=>{
-        console.log(params["id"]);
+        console.log('Params:- ',params["id"]);
         if(params["id"]){
-          this.dataService.get(params["id"],res=>{
+         // this.dataService.get(params["id"],res=>{
+           this.firebaseService.get(params["id"],res=>{
             this.coffee=res;
             if(this.coffee.tastingRating){
               this.tastingEnabled=true;
@@ -60,16 +61,16 @@ export class CoffeeComponent implements OnInit {
   }
 
   save(){
-    this.dataService.save(this.coffee,result=>{
-      if(result){
-        this.router.navigate(["/"]);
-      }
-    });
-    // this.firebaseService.storeCoffees(this.coffee, result=>{
+    // this.dataService.save(this.coffee,result=>{
     //   if(result){
     //     this.router.navigate(["/"]);
     //   }
     // });
+    this.firebaseService.storeCoffees(this.coffee, result=>{
+      if(result){
+        this.router.navigate(["/"]);
+      }
+    });
   }
 
   cancel(){

@@ -9,7 +9,8 @@ export class DataService {
 
   constructor(private http:Http) { }
 
-  public endpoint = "http://localhost:3000";
+  //public endpoint = "http://localhost:3000";
+ public endpoint = "https://my-coffee-app-f8a64.firebaseio.com"
 
   get(coffeeId:string,callback){
     this.http.get(`${this.endpoint}/coffees/${coffeeId}`)

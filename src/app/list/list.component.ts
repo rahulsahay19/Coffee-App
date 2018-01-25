@@ -3,6 +3,7 @@ import { DataService } from '../data.service';
 import { Coffee } from '../logic/coffee';
 import {Router} from '@angular/router';
 import { GeolocationService } from '../geolocation.service';
+import { FireBaseService } from '../firebase.service';
 
 @Component({
   selector: 'app-list',
@@ -11,17 +12,27 @@ import { GeolocationService } from '../geolocation.service';
 })
 export class ListComponent implements OnInit {
 
-  list:[Coffee];
-  constructor(private dataService:DataService, private router: Router, private geoLocation:GeolocationService) { }
+  list:any;
+  constructor(private dataService:DataService, private router: Router, private geoLocation:GeolocationService,
+  private firebaseService:FireBaseService) { }
 
   ngOnInit() {
-    this.dataService.getList(list=>{
-      this.list=list;
+    // this.dataService.getList(list=>{
+    //   this.list=list;
+    // });
+    this.firebaseService.getList(list=>{
+      //this.list=list[0];
+      this.list = Object.values(list)
+      console.log(list[0]);
+      console.log('This List', this.list);
     });
   }
 
   goDetails(coffee:Coffee){
-    this.router.navigate(["/coffee",coffee._id])
+    console.log('something',coffee);
+   // this.router.navigate(["/coffee/",coffee._id])
+   console.log("ID- ",coffee._id)
+   this.router.navigate(["coffee", '-L3dxNv_rAXSmr0UV4ag'])
   }
 
   goToMap(coffee:Coffee){
