@@ -32,7 +32,7 @@ export class ListComponent implements OnInit {
     console.log('something',coffee);
    // this.router.navigate(["/coffee/",coffee._id])
    console.log("ID- ",coffee._id)
-   this.router.navigate(["coffee", '-L3dxNv_rAXSmr0UV4ag'])
+   this.router.navigate(["coffee", coffee._id])
   }
 
   goToMap(coffee:Coffee){
